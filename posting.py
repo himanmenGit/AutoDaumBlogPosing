@@ -1,4 +1,5 @@
 import os
+import platform
 
 from selenium import webdriver
 
@@ -6,19 +7,21 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-import os, inspect
+import inspect
 
 
 class DaumPosting:
 
     def __init__(self, ui, **kwargs):
-        # for window
-        current_folder = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile(inspect.currentframe() ))[0]))
-        driver_path = os.path.join(current_folder, 'chromedriver.exe')
+        driver_path = None
 
-        # for linux
-        # current_folder = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile(inspect.currentframe()))[0]))
-        # driver_path = os.path.join(current_folder, 'chromedriver.exe')
+        if platform.system() == 'Windows':
+            current_folder = os.path.realpath(
+                os.path.abspath(os.path.split(inspect.getfile(inspect.currentframe()))[0]))
+            driver_path = os.path.join(current_folder, 'chromedriver.exe')
+        elif platform.system() == 'Linux':
+            current_folder = os.path.dirname(os.path.realpath(__file__))
+            driver_path = os.path.join(current_folder, 'chromedriver')
 
         self.browser = webdriver.Chrome(driver_path)
 
