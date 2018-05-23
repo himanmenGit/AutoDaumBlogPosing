@@ -1,20 +1,7 @@
 # Custom
-/.media
-/.static
-/.secrets
-aws.md
-*.html
-
-
-# Gitignore for deploying the second server
-deploy2.sh
-
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-
+/.build
+/.dist
+ui.spec
 
 # Created by https://www.gitignore.io/api/git,linux,macos,django,python,pycharm+all
 
